@@ -12,7 +12,7 @@ draft: false
 当前业界大多把模型在RL训练时出现reward 崩溃的问题归因于“训推不一致”。然而，我们的实验发现：**当前阶段 RL 训练不稳定的主导因素并不是训推不一致，而是采样噪声（Sampling Noise）本身**。当我们显式抑制噪声强度后，即使存在明显的训推差异，训练依旧保持稳定，并能获得更快的收敛速度。
 基于此技术，KAT-Coder-Pro V1经过我们大规模agentic RL后，其综合能力得以与世界头部的模型相比肩，在权威评测机构 Artificial Analysis（AA）榜单中表现亮眼，以 64 分综合评分跻身全球总榜TOP 10，更以绝对优势在 Non-Reasoning Model 中斩获第一名。
 
-![aa分数](/test-github-page/images/1201_blog/score_all.png)
+![aa分数](/kwaikat-blog/images/1201_blog/score_all.png)
 ---
 
 ### 当前重要性采样的实现方式：偏差–方差视角
@@ -105,14 +105,14 @@ $$
 我们对比了以下四种典型方案：
 
 1. TIS（Truncated Importance Sampling）：在计算重要性权重w(a)时设置上下界（clipping），以控制方差放大。
-2. 使用推理引擎采样概率（rollout\_logprob\_235b）：使用 rollout 阶段推理引擎输出的$\pi_{\text{sampler}}$作为$\pi_{\text{rollout}}$。
-3. 训练引擎重新计算概率（recompute\_logprob\_235b）：在 rollout 结束后，利用训练后端重新计算$\pi_{\text{learner}}$并作为旧策略概率。
+2. 使用推理引擎采样概率（rollout\_logprob）：使用 rollout 阶段推理引擎输出的$\pi_{\text{sampler}}$作为$\pi_{\text{rollout}}$。
+3. 训练引擎重新计算概率（recompute\_logprob）：在 rollout 结束后，利用训练后端重新计算$\pi_{\text{learner}}$并作为旧策略概率。
 4. Routing Replay：在重计算阶段强制复用 rollout 阶段的专家路由，以减少路由随机性造成的波动。
 
 我们的多次采样估计法（Ours）：对同一输入重复前向n=8次，取平均概率作为旧策略概率。
 
 图1 展示了不同方法在训练过程中的 reward 变化曲线。可以观察到：
-line_graph
+![line_graph](/kwaikat-blog/images/1201_blog/line_graph.png)
 
 * recompute\_logprob、rollout\_logprob 两种方法均在训练后期出现明显的 reward 崩溃或震荡放大现象，实验中具体表现为 reward 在 60\~80 step 之后快速下降，并无法逆转。
 * Routing Replay 在一定程度上缓解了崩溃，reward 能始终保持相对稳定。但实现时为了避免rollout吞吐大幅下降，在多轮场景下无法保证prefix cache 100%命中，因此其效果无法达到最优。
@@ -120,7 +120,7 @@ line_graph
 
 此外，为了验证我们的方法确实能够有效降低$\hat{\pi}_{\text{rollout}}$和$\pi_{\text{train}}$之间的偏差，我们统计了训练过程中两者之间的KL散度，如下图所示：
 
-kl_compare
+![kl_compare](/kwaikat-blog/images/1201_blog/kl_compare.png)
 从图中可以看出，不管是使用训练引擎重新计算logprob还是直接使用推理引擎的logprob，都会在训练过程中出现KL散度的剧烈波动，而routing replay和我们的低方差采样概率估计都能在整个训练过程中将KL散度保持在较低水平。
 
 ---
