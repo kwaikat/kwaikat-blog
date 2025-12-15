@@ -127,30 +127,22 @@ $$
 
 
 
-引用：
+references：
 
 [1] He, Horace and Thinking Machines Lab, "Defeating Nondeterminism in LLM Inference",
 
 Thinking Machines Lab: Connectionism, Sep 2025.
 
 [2] @misc{ma2025stabilizingmoereinforcementlearning,
-
-```
-title={Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers}, 
-
-  author={Wenhan Ma and Hailin Zhang and Liang Zhao and Yifan Song and Yudong Wang and Zhifang Sui and Fuli Luo},
-
-  year={2025},
-
-  eprint={2510.11370},
-
-  archivePrefix={arXiv},
-
-  primaryClass={cs.CL},
-
-  url={[https://arxiv.org/abs/2510.11370](https://arxiv.org/abs/2510.11370)},
-```
-
-}
+title={Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers}, author={Wenhan Ma and Hailin Zhang and Liang Zhao and Yifan Song and Yudong Wang and Zhifang Sui and Fuli Luo},year={2025},eprint={2510.11370},archivePrefix={arXiv},primaryClass={cs.CL},url={[https://arxiv.org/abs/2510.11370](https://arxiv.org/abs/2510.11370)},}
 
 [3]@misc{yao2025offpolicy, title = {Your Efficient RL Framework Secretly Brings You Off-Policy RL Training}, url = {[https://fengyao.notion.site/off-policy-rl](https://fengyao.notion.site/off-policy-rl)}, author = {Yao, Feng and Liu, Liyuan and Zhang, Dinghuai and Dong, Chengyu and Shang, Jingbo and Gao, Jianfeng}, journal = {Feng Yao's Notion}, year = {2025}, month = aug, }
+
+----
+Please cite this work as:
+@article{kk2025moerlsamplingnoise,
+  author = {Xiaojiang Zhang, Jinghui Wang, KwaiKAT Team},
+  title = {Reducing Sampling Noise to Improve Stability of MoE Reinforcement Learning},
+  year = {2025},
+  url = {https://kwaikat.github.io/kwaikat-blog/posts/katcoder_1201/}
+}
