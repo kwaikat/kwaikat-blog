@@ -140,9 +140,14 @@ title={Stabilizing MoE Reinforcement Learning by Aligning Training and Inference
 
 ----
 Please cite this work as:
+
 @article{kk2025moerlsamplingnoise,
+
   author = {Xiaojiang Zhang, Jinghui Wang, KwaiKAT Team},
+
   title = {Reducing Sampling Noise to Improve Stability of MoE Reinforcement Learning},
+
   year = {2025},
+  
   url = {https://kwaikat.github.io/kwaikat-blog/posts/katcoder_1201/}
 }
