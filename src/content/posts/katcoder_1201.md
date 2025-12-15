@@ -12,7 +12,7 @@ draft: false
 当前业界大多把模型在RL训练时出现reward 崩溃的问题归因于“训推不一致”。然而，我们的实验发现：**当前阶段 RL 训练不稳定的主导因素并不是训推不一致，而是采样噪声（Sampling Noise）本身**。当我们显式抑制噪声强度后，即使存在明显的训推差异，训练依旧保持稳定，并能获得更快的收敛速度。
 基于此技术，KAT-Coder-Pro V1经过我们大规模agentic RL后，其综合能力得以与世界头部的模型相比肩，在权威评测机构 Artificial Analysis（AA）榜单中表现亮眼，以 64 分综合评分跻身全球总榜TOP 10，更以绝对优势在 Non-Reasoning Model 中斩获第一名。
 
-![aa分数](/images/1201_blog/score_all.png)
+![aa分数](/test-github-page/images/1201_blog/score_all.png)
 ---
 
 ### 当前重要性采样的实现方式：偏差–方差视角
