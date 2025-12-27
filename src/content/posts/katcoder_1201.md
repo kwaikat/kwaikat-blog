@@ -153,4 +153,4 @@ Please cite this work as:
 }
 
 --- 
-Contacts: zhangxiaojiang@kuaishou.com, wangjinghui05@kuaishou.com
+Contacts: wangjinghui05@kuaishou.com, zhangxiaojiang@kuaishou.com
